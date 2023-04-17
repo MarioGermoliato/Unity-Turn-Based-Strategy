@@ -22,9 +22,9 @@ public class Unit : MonoBehaviour
        
         
 
-       if(Input.GetKeyDown(KeyCode.F)) 
+       if(Input.GetMouseButtonDown(0)) 
         {
-            targetPosition = new Vector3(4, 0, 4);        
+            Move(MouseWorld.GetPosition());        
         }
         
     }
