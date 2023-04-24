@@ -190,6 +190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 188469989}
+  - component: {fileID: 188469990}
   m_Layer: 0
   m_Name: CameraController
   m_TagString: Untagged
@@ -212,6 +213,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &188469990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188469988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9981d572769e6a4db414a5086b2b84a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  rotationSpeed: 80
+  zoomAmount: 1
+  zoomSpeed: 5
+  cinemachineVirtualCamera: {fileID: 1535416667}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +316,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.3006394, y: -0.000000016410379, z: 0.0000000051729154, w: 0.9537379}
+  m_LocalRotation: {x: 0.3006394, y: 0.000000016410379, z: -0.0000000051729154, w: 0.9537379}
   m_LocalPosition: {x: 0, y: 7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -993,7 +1011,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1535416666}
-  m_LocalRotation: {x: 0.3006394, y: -0.000000016410379, z: 0.0000000051729154, w: 0.9537379}
+  m_LocalRotation: {x: 0.3006394, y: 0.000000016410379, z: -0.0000000051729154, w: 0.9537379}
   m_LocalPosition: {x: 0, y: 7, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1070,6 +1088,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Unit (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6952627661073722376, guid: 4da233bdea70c9a4ba6bf1b07b434ac5,
+        type: 3}
+      propertyPath: maxMoveDistance
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1104,6 +1127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e7cf9d072d68c44da2f2aa04ff4e58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unit: {fileID: 45745193}
 --- !u!4 &1793049590
 Transform:
   m_ObjectHideFlags: 0
@@ -1186,6 +1210,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Unit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952627661073722376, guid: 4da233bdea70c9a4ba6bf1b07b434ac5,
+        type: 3}
+      propertyPath: maxMoveDistance
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
