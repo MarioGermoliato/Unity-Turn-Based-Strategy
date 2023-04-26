@@ -6,6 +6,7 @@ public class Testing : MonoBehaviour
 {
     [SerializeField] Unit unit;
     
+    
     private void Start()
     {
     
@@ -15,7 +16,8 @@ public class Testing : MonoBehaviour
     {
        if(Input.GetKeyDown(KeyCode.T))
         { 
-            unit.GetMoveAction().GetValidActionGridPositionList();
+            
+            
         }
     }
 }
