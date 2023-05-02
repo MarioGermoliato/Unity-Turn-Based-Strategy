@@ -5,10 +5,17 @@ using UnityEngine;
 
 public class ShootAction : BaseAction    
 {
-    public event EventHandler OnShoot;
+    public event EventHandler<OnShootEventArgs> OnShoot;
+
+    public class OnShootEventArgs : EventArgs
+    {
+        public Unit targetUnit;
+        public Unit shootingUnit;
+    }
 
     [SerializeField] private int MaxShootDistance = 7;
     [SerializeField] private float aimingRotation = 10f;
+    [SerializeField] private int shootDamage = 40;
     
     private enum State
     {
@@ -75,8 +82,12 @@ public class ShootAction : BaseAction
     }
     private void Shoot()
     {
-        OnShoot?.Invoke(this, EventArgs.Empty);
-        targetUnit.Damage();
+        OnShoot?.Invoke(this, new OnShootEventArgs
+        {
+            targetUnit = targetUnit,
+            shootingUnit = unit
+        });
+        targetUnit.Damage(shootDamage);
     }
 
     public override string GetActionName()
@@ -145,6 +156,6 @@ public class ShootAction : BaseAction
 
     public override int GetActionPointsCost()
     {
-        return 2;
+        return 1;
     }
 }

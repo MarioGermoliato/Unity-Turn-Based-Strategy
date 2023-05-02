@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: -3669599174206016218}
   - component: {fileID: -7589978275038033822}
   - component: {fileID: -8786240826801292669}
+  - component: {fileID: 4054212033634878556}
+  - component: {fileID: 6354623025650891177}
   m_Layer: 7
   m_Name: Unit
   m_TagString: Untagged
@@ -87,8 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4
   rotateSpeed: 10
-  unitAnimator: {fileID: 8474727279257162199}
-  maxMoveDistance: 0
+  maxMoveDistance: 4
 --- !u!114 &-3669599174206016218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxShootDistance: 7
   aimingRotation: 5
+  shootDamage: 40
 --- !u!114 &-8786240826801292669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +130,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8474727279257162199}
+  bulletProjectilePrefab: {fileID: 3121303787102142536, guid: b6688671b592031459f233838fe51a93,
+    type: 3}
+  shootPointTransform: {fileID: 3523835519793439578}
+--- !u!114 &4054212033634878556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414534019663465989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043aba11b219d5e40a9a544a30407d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+--- !u!114 &6354623025650891177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414534019663465989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b923b8fbddde600489a7029e907bbf13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ragdollPrefab: {fileID: 623985331761361402, guid: 51462b5dd2ca7634a8c1e0a3e258f899,
+    type: 3}
+  originalRootBone: {fileID: 8419952904130208981}
 --- !u!1 &3461740346073400944
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,6 +258,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unit: {fileID: 6606566636617899446}
+--- !u!1 &6870496704989128995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3523835519793439578}
+  m_Layer: 7
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3523835519793439578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6870496704989128995}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.087, z: 0.7357}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8251180946445660537}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8255801389144203797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -331,7 +395,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 25af05085d2957e42ac6b80b69ddd26a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4620998167008108, guid: c25ac4fdc903e7d49a7520930673ecd6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3523835519793439578}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c25ac4fdc903e7d49a7520930673ecd6, type: 3}
 --- !u!4 &8251180946445660537 stripped
@@ -648,6 +716,12 @@ Transform:
 --- !u!4 &8419563602047693007 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4580766925885248, guid: 2f3e27eecb190e44a9af50723c394274,
+    type: 3}
+  m_PrefabInstance: {fileID: 8414987252500201359}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8419952904130208981 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4966341056781146, guid: 2f3e27eecb190e44a9af50723c394274,
     type: 3}
   m_PrefabInstance: {fileID: 8414987252500201359}
   m_PrefabAsset: {fileID: 0}
