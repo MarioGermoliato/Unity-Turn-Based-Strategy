@@ -14,17 +14,13 @@ public class Unit : MonoBehaviour
     [SerializeField] private bool isEnemy;
 
     private HealthSystem healthSystem;
-    private GridPosition gridPosition;  
-    private MoveAction moveAction;
-    private SpinAction spinAction;
+    private GridPosition gridPosition;      
     private BaseAction[] baseActionArray;
     private int actionPoints = ACTION_POINTS_MAX;
 
     private void Awake()
     {
-        healthSystem = GetComponent<HealthSystem>();
-        moveAction = GetComponent<MoveAction>();
-        spinAction = GetComponent<SpinAction>();
+        healthSystem = GetComponent<HealthSystem>();       
         baseActionArray = GetComponents<BaseAction>();
     }
 
@@ -38,15 +34,7 @@ public class Unit : MonoBehaviour
 
         OnAnyUnitSpawned?.Invoke(this, EventArgs.Empty);
     }
-
-    private void HealthSystem_OnDead(object sender, EventArgs e)
-    {
-        LevelGrid.Instance.RemoveUnitAtGridPosition(gridPosition, this);
-
-        Destroy(gameObject);
-
-        OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
-    }
+  
 
     private void Update()
     {       
@@ -61,16 +49,32 @@ public class Unit : MonoBehaviour
         }
     }
 
-    public MoveAction GetMoveAction()
+    public T GetAction<T>() where T : BaseAction
     {
-        return moveAction;
+        foreach (BaseAction baseAction in baseActionArray)
+        {
+            if (baseAction is T)
+            {
+                return (T)baseAction;
+            }
+        }
+        return null;
     }
 
-    public SpinAction GetSpinAction()
+    private void HealthSystem_OnDead(object sender, EventArgs e)
     {
-        return spinAction;
+        LevelGrid.Instance.RemoveUnitAtGridPosition(gridPosition, this);
+
+        Destroy(gameObject);
+
+        OnAnyUnitDead?.Invoke(this, EventArgs.Empty);
     }
 
+    public float GetHealthNormalized()
+    {
+        return healthSystem.GetHealthNormalized();
+    }
+       
     public GridPosition GetGridPosition()
     {
         return gridPosition;
