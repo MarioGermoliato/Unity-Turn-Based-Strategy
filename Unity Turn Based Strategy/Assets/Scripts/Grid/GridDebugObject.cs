@@ -7,15 +7,15 @@ public class GridDebugObject : MonoBehaviour
 {
     [SerializeField] private TMP_Text gridDebugObjectText;
 
-    private GridObject gridObject;
+    private object gridObject;
 
 
-    private void Update()
+    protected virtual void Update()
     {
         gridDebugObjectText.text = gridObject.ToString();
     }
     
-    public void SetGridObject(GridObject gridObject)
+    public virtual void SetGridObject(object gridObject)
     {
         this.gridObject = gridObject;
     }
